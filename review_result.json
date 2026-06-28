@@ -1,0 +1,14 @@
+{
+  "issues": [
+    {
+      "file": "hello.py",
+      "line": 4,
+      "severity": "suggestion",
+      "category": "style",
+      "description": "Expected 2 blank lines after function definition, found 1. (E305)",
+      "suggestion": "Add an additional blank line after the `greet` function definition before calling `greet(\"World\")`."
+    }
+  ],
+  "overall_assessment": "The code is functionally correct and simple. The only issue is a minor style violation regarding blank lines after a function definition.",
+  "review_decision": "REQUEST_CHANGES"
+}

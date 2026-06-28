@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewBot - AI-Powered PR Reviews</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <div class="header-left">
+                <span class="logo">🤖 ReviewBot</span>
+                <span class="tagline">AI-Powered PR Reviews</span>
+            </div>
+            <div class="header-right">
+                <a href="https://github.com/apps/reviewbot-dev-withshafan" target="_blank" class="btn-primary">
+                    <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Install on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tab-nav">
+        <div class="tab-container">
+            <button class="tab-btn active" data-target="overview">🏠 Overview</button>
+            <button class="tab-btn" data-target="api-docs">📖 API Docs</button>
+            <button class="tab-btn" data-target="dashboard">📊 Dashboard</button>
+            <button class="tab-btn" data-target="health">💚 Health</button>
+            <button class="tab-btn" data-target="demo">🎬 Demo</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-container">
+        <!-- TAB 1: Overview -->
+        <section id="overview" class="tab-content active">
+            <div class="hero">
+                <h1>ReviewBot &mdash; AI-Powered Pull Request Reviews for GitHub</h1>
+                <p class="subtitle">Automatic code reviews powered by Google Gemini AI</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <h3>PRs Reviewed</h3>
+                    <div class="stat-number counter" data-target="{{ total_reviews | default(0) }}">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Issues Found</h3>
+                    <div class="stat-number counter" data-target="{{ total_issues | default(0) }}">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Repositories</h3>
+                    <div class="stat-number counter" data-target="{{ total_repos | default(0) }}">0</div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-icon">1</div>
+                        <h4>Open a Pull Request</h4>
+                        <p>Developer pushes code to GitHub.</p>
+                    </div>
+                    <div class="step-arrow">&rarr;</div>
+                    <div class="step">
+                        <div class="step-icon">2</div>
+                        <h4>ReviewBot Analyzes</h4>
+                        <p>Webhook triggers static analysis.</p>
+                    </div>
+                    <div class="step-arrow">&rarr;</div>
+                    <div class="step">
+                        <div class="step-icon">3</div>
+                        <h4>AI Reviews</h4>
+                        <p>Gemini reviews the diff context.</p>
+                    </div>
+                    <div class="step-arrow">&rarr;</div>
+                    <div class="step">
+                        <div class="step-icon">4</div>
+                        <h4>Comments Posted</h4>
+                        <p>Inline PR feedback appears.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="icon">🔍</span>
+                        <h4>AI-Powered Reviews</h4>
+                        <p>Gemini analyzes your code.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">⚡</span>
+                        <h4>Real-time Comments</h4>
+                        <p>Inline PR feedback.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">🛡️</span>
+                        <h4>Static Analysis</h4>
+                        <p>Pre-filter with flake8.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">🔒</span>
+                        <h4>Security First</h4>
+                        <p>JWT authentication.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">⚙️</span>
+                        <h4>Configurable</h4>
+                        <p><code>.reviewbot.yaml</code> support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="icon">📦</span>
+                        <h4>Open Source</h4>
+                        <p>MIT licensed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: API Docs -->
+        <section id="api-docs" class="tab-content">
+            <div class="docs-header">
+                <h2>API Documentation</h2>
+                <div class="docs-toggles">
+                    <button class="doc-toggle-btn active" data-doc="swagger">Swagger UI</button>
+                    <button class="doc-toggle-btn" data-doc="redoc">ReDoc</button>
+                </div>
+            </div>
+            <div id="swagger-ui-container" class="docs-ui-container active"></div>
+            <div id="redoc-container" class="docs-ui-container" style="display: none;"></div>
+        </section>
+
+        <!-- TAB 3: Dashboard -->
+        <section id="dashboard" class="tab-content">
+            <h2>Dashboard</h2>
+            
+            <div class="dashboard-summary">
+                <div class="summary-card">
+                    <h4>Total Reviews</h4>
+                    <p id="dash-total-reviews">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Critical Issues</h4>
+                    <p id="dash-critical-issues" class="text-danger">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Suggestions</h4>
+                    <p id="dash-suggestions" class="text-info">0</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="reviewsChart"></canvas>
+            </div>
+
+            <div class="table-container">
+                <h3>Recent Reviews</h3>
+                <table class="data-table" id="reviews-table">
+                    <thead>
+                        <tr>
+                            <th>PR</th>
+                            <th>Repository</th>
+                            <th>Date</th>
+                            <th>Issues Found</th>
+                            <th>Decision</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TAB 4: Health Check -->
+        <section id="health" class="tab-content">
+            <h2>System Health</h2>
+            
+            <div class="health-grid">
+                <div class="health-card">
+                    <div class="health-icon {% if true %}online{% else %}offline{% endif %}">{% if true %}✅{% else %}❌{% endif %}</div>
+                    <h4>Server Status</h4>
+                    <p>Online</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon {% if db_ok %}online{% else %}offline{% endif %}">{% if db_ok %}✅{% else %}❌{% endif %}</div>
+                    <h4>Database</h4>
+                    <p>{% if db_ok %}Connected{% else %}Disconnected{% endif %}</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon {% if gemini_ok %}online{% else %}offline{% endif %}">{% if gemini_ok %}✅{% else %}❌{% endif %}</div>
+                    <h4>Gemini API</h4>
+                    <p>{% if gemini_ok %}Available{% else %}Unavailable{% endif %}</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">🕒</div>
+                    <h4>Last Review</h4>
+                    <p>
+                        {% if last_review %}
+                            {{ last_review.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {% else %}
+                            Never
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="system-info">
+                <h3>System Information</h3>
+                <ul>
+                    <li><strong>Python Version:</strong> 3.10+</li>
+                    <li><strong>FastAPI Version:</strong> Latest</li>
+                    <li><strong>Database:</strong> SQLite</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TAB 5: Demo -->
+        <section id="demo" class="tab-content">
+            <h2>Interactive Demo</h2>
+            <p>See how ReviewBot analyzes a mock Pull Request.</p>
+
+            <div class="demo-layout">
+                <div class="demo-code">
+                    <div class="code-header">main.py</div>
+                    <pre><code class="diff-code">
+  def calculate_total(items):
+-     total = 0
+-     for item in items:
+-         total += item.price
+-     return total
++     return sum([item.price for item in items])
+                    </code></pre>
+                </div>
+                
+                <div class="demo-controls">
+                    <button id="run-demo-btn" class="btn-primary">Run Review</button>
+                    <div id="demo-status" class="demo-status">Waiting to start...</div>
+                    <div id="demo-result" class="demo-result hidden">
+                        <!-- AI Comments will appear here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Swagger/ReDoc Scripts -->
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+    <style>
+        /* Custom dark theme overrides for Swagger UI */
+        .swagger-ui { filter: invert(88%) hue-rotate(180deg); }
+        .swagger-ui .microlight { filter: invert(100%) hue-rotate(180deg); }
+    </style>
+    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

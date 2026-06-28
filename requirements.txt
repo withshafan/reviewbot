@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+httpx
+PyJWT
+cryptography
+unidiff
+anthropic
+openai
+pydantic
+sqlalchemy
+alembic
+python-dotenv
+PyYAML
+google-generativeai
+jinja2
+aiofiles
