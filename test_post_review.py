@@ -12,9 +12,9 @@ load_dotenv()
 async def main():
     installation_id = "142975722"
     owner = "withshafan"
-    repo = "test-app"
-    pr_number = 1  # Your PR number
-    branch_ref = "pr-test"  # The branch name with your changes
+    repo = "reviewbot"
+    pr_number = 1
+    branch_ref = "add-config-example"  # The branch name with your changes
     
     print(f"ReviewBot testing PR #{pr_number} on {owner}/{repo}")
     print("=" * 50)
