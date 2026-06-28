@@ -1,0 +1,21 @@
+# ReviewBot Configuration File Example
+# Rename this file to .reviewbot.yaml and place it in the root of your repository.
+
+# List of files or directories to ignore during code review
+ignore_patterns:
+  - "*.md"
+  - "docs/"
+  - "tests/"
+  - "venv/"
+  - ".venv/"
+  - ".gitignore"
+  - "*.example"
+
+# Custom instructions for the AI reviewer
+custom_instructions: "Please ensure all Python code follows PEP 8 style guidelines. Focus on readability and maintainability. Point out any potential security issues or performance bottlenecks."
+
+# Review strictness level: 'lax', 'normal', 'strict'
+strictness: "normal"
+
+# Max suggestions to provide
+max_suggestions: 5
