@@ -140,24 +140,24 @@ Navigate to the root URL (`/`) to access:
 
 ## 🎛️ Configuration
 
-ReviewBot can be customized on a per-repository basis. Create a `.reviewbot.yaml` file in the root of the target repository:
+ReviewBot can be customized on a per-repository basis. You can copy the included `.reviewbot.yaml.example` to `.reviewbot.yaml` in the root of your target repository and customize it:
 
 ```yaml
-# Only post comments for issues of this severity or higher 
-# Options: nitpick, suggestion, warning, critical
-min_severity: warning
-
-# UNIX-style glob patterns for files the bot should ignore
-ignore_paths:
+# List of files or directories to ignore during code review
+ignore_patterns:
   - "*.md"
-  - "docs/*"
-  - "tests/*"
+  - "docs/"
+  - "tests/"
+  - "venv/"
 
-# Custom instructions for the Gemini AI
-focus_areas:
-  - "Check for SQL injection vulnerabilities"
-  - "Ensure strict type hinting is used"
-  - "Watch out for off-by-one errors in loops"
+# Custom instructions for the AI reviewer
+custom_instructions: "Please ensure all Python code follows PEP 8 style guidelines. Focus on readability and maintainability. Point out any potential security issues or performance bottlenecks."
+
+# Review strictness level: 'lax', 'normal', 'strict'
+strictness: "normal"
+
+# Max suggestions to provide
+max_suggestions: 5
 ```
 
 ---

@@ -12,7 +12,7 @@ load_dotenv()
 async def test():
     installation_id = "142975722"
     owner = "withshafan"
-    repo = "test-app"
+    repo = "reviewbot"
     pr_number = 1
     
     print(f"Testing LLM review for {owner}/{repo} PR #{pr_number}")
@@ -34,7 +34,7 @@ async def test():
         
         # Fetch full file content
         try:
-            content = await fetch_file_content(owner, repo, filename, "pr-test", token)
+            content = await fetch_file_content(owner, repo, filename, "add-config-example", token)
             print(f"Fetched content ({len(content)} chars)")
         except Exception as e:
             print(f"Error fetching content: {e}")
